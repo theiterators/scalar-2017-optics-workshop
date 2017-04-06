@@ -11,16 +11,19 @@ class IsoSpec extends Specification with CatsEqMatcher {
         An Iso is an optic which converts elements of type S into elements of type T without loss.
 
         Valid iso should convert m/s to k/m and backward:
-          should convert m/s to km/h  $test01
-          should convert km/h to m/s  $test02
-          should modify m/s           $test03
+          should convert m/s to km/h        $test01
+          should convert km/h to m/s        $test02
+          should reverse source with target $test03
+          should modify m/s                 $test04
       """
 
   def test01 = iso.get(MS(27.78)) must beEqvTo(KMH(100.0))
 
   def test02 = iso.reverseGet(KMH(100.0)) must beEqvTo(MS(27.78))
 
-  def test03 = iso.modify(v => KMH(v.v * 2.0))(MS(27.78)) must beEqvTo(MS(55.56))
+  def test03 = iso.reverse.get(KMH(100.0)) must beEqvTo(MS(27.78))
+
+  def test04 = iso.modify(v => KMH(v.v * 2.0))(MS(27.78)) must beEqvTo(MS(55.56))
 
 
   /**
