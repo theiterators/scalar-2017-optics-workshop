@@ -1,4 +1,4 @@
-package json
+package example.json
 
 import monocle._
 
