@@ -40,19 +40,19 @@ class AtSpec extends Specification {
 
     """
 
-  lazy val colorBalls: ColorBalls = Map(
-    "red" -> List(
-      Ball(Pos(X(1), Y(1)), MS(1.0))),
-    "blue" -> List(
-      Ball(Pos(X(0), Y(0)), MS(1.0)),
-      Ball(Pos(X(0), Y(1)), MS(2.0))
-    ),
-    "white" -> List(
-      Ball(Pos(X(3), Y(1)), MS(1.0)),
-      Ball(Pos(X(4), Y(1)), MS(2.0)),
-      Ball(Pos(X(5), Y(0)), MS(3.0)),
-      Ball(Pos(X(5), Y(1)), MS(4.0)))
-  )
+//  lazy val colorBalls: ColorBalls = Map(
+//    "red" -> List(
+//      Ball(Pos(X(1), Y(1)), MS(1.0))),
+//    "blue" -> List(
+//      Ball(Pos(X(0), Y(0)), MS(1.0)),
+//      Ball(Pos(X(0), Y(1)), MS(2.0))
+//    ),
+//    "white" -> List(
+//      Ball(Pos(X(3), Y(1)), MS(1.0)),
+//      Ball(Pos(X(4), Y(1)), MS(2.0)),
+//      Ball(Pos(X(5), Y(0)), MS(3.0)),
+//      Ball(Pos(X(5), Y(1)), MS(4.0)))
+//  )
 
   def test01 = ko("implement me")
 
@@ -76,34 +76,34 @@ class AtSpec extends Specification {
   }
 
 
-  type ColorBalls = Map[String, Balls]
-
-  @Lenses("_") case class CBalls(cb: ColorBalls)
-
-  lazy val balls: Balls = List(
-    Ball(Pos(X(0), Y(0)), MS(1.0)),
-    Ball(Pos(X(0), Y(1)), MS(2.0)),
-    Ball(Pos(X(1), Y(0)), MS(3.0)),
-    Ball(Pos(X(1), Y(1)), MS(4.0))
-  )
-
-  type Balls = List[Ball]
-
-  @Lenses("_") final case class X(x: Int)
-
-  @Lenses("_") final case class Y(y: Int)
-
-  @Lenses("_") final case class Pos(x: X, y: Y)
-
-  @Lenses("_") final case class Ball(pos: Pos, v: MS)
-
-  object MSIso {
-    val _iso: Iso[MS, KMH] = Iso[MS, KMH](ms => KMH(ms.v * 3.6))(kmh => MS(kmh.v * 0.2778))
-  }
-
-
-  val msLens = Lens[MS, Double](_.v)(v => ms => ms.copy(v = v))
-  val msIso: Iso[MS, KMH] = Iso[MS, KMH](ms => KMH(ms.v * 3.6))(kmh => MS(kmh.v * 0.2778))
-
+//  type ColorBalls = Map[String, Balls]
+//
+//  @Lenses("_") case class CBalls(cb: ColorBalls)
+//
+//  lazy val balls: Balls = List(
+//    Ball(Pos(X(0), Y(0)), MS(1.0)),
+//    Ball(Pos(X(0), Y(1)), MS(2.0)),
+//    Ball(Pos(X(1), Y(0)), MS(3.0)),
+//    Ball(Pos(X(1), Y(1)), MS(4.0))
+//  )
+//
+//  type Balls = List[Ball]
+//
+//  @Lenses("_") final case class X(x: Int)
+//
+//  @Lenses("_") final case class Y(y: Int)
+//
+//  @Lenses("_") final case class Pos(x: X, y: Y)
+//
+//  @Lenses("_") final case class Ball(pos: Pos, v: MS)
+//
+//  object MSIso {
+//    val _iso: Iso[MS, KMH] = Iso[MS, KMH](ms => KMH(ms.v * 3.6))(kmh => MS(kmh.v * 0.2778))
+//  }
+//
+//
+//  val msLens = Lens[MS, Double](_.v)(v => ms => ms.copy(v = v))
+//  val msIso: Iso[MS, KMH] = Iso[MS, KMH](ms => KMH(ms.v * 3.6))(kmh => MS(kmh.v * 0.2778))
+//
 
 }
