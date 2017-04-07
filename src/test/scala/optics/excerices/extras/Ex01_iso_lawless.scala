@@ -1,7 +1,6 @@
-package optics
-package excerices.classic
+package optics.excerices.extras
 
-import classic.Iso
+import optics.classic.Iso
 import org.specs2.Specification
 
 class IsoLawlessSpec extends Specification {

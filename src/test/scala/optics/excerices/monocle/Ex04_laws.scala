@@ -12,9 +12,8 @@ class LawsSpec extends Specification with Discipline {
 
   def is =
     s2"""
-
-      $test01
-
+      Monocle comes with build in testing support.
+      E.g. it allows to test custom iso implementation $test01
     """
 
 

@@ -1,5 +1,4 @@
-package optics
-package excerices.classic
+package optics.excerices.extras
 
 import optics.classic.Prism
 import org.specs2.Specification
