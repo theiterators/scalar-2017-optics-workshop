@@ -12,7 +12,7 @@ class PrismSpec extends Specification with CatsEqMatcher {
 
   def is =
     s2"""
-        A Prism is a Iso that can be partial in one direction (but this is only a part o a truth)
+        A Prism is a Iso that can be partial in one direction.
         A Prism is an optic which converts S into T if S is defined in T. Backward conversion is always valid.
 
         Valid prim should convert string into m/s if a string contains valid numeric value $test01.
@@ -20,7 +20,7 @@ class PrismSpec extends Specification with CatsEqMatcher {
         Converting from m/s to string is always possible because it's valid string $test03.
         Prism allows to modify source value $test04 or return unchanged if conversion is impossible $test05.
 
-        Again this is not a full truth about prism but for simplicity we will stick with it.
+        This is not a full truth about prism but for simplicity we will stick with it.
         If you are curious checkout the lenses documentation.
     """
 
@@ -38,9 +38,9 @@ class PrismSpec extends Specification with CatsEqMatcher {
   /**
     * TODO: Implement me!
     *
-    * Compose both isomorphism ${si} and ${imperial} to obtain a iso between m/s and mph
+    * Define a prism which will convert string into m/s
     *
-    * Hint: Types should align like Iso[MS, KMH] -> Iso[KMH, MPS] -> Iso[MS, MPS]
+    * Hint: Use the apply method from Iso
     *
     */
   lazy val prism: Prism[String, MS] = ???

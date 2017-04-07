@@ -1,3 +1,4 @@
+package example
 package object json {
 
   import scala.language.higherKinds

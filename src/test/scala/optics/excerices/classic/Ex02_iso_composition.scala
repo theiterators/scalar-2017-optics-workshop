@@ -27,7 +27,7 @@ class IsoCompositionSpec extends Specification with CatsEqMatcher {
   def test04 = si2imperial.reverseGet(MPH(62.14)) must beEqvTo(MS(27.78))
 
   /**
-    * TODO: Implement me! Or copy from previous ex
+    * Copied from previous example
     *
     * Conversion rule:
     *   ms -> km/h:   1 [m/s]   * 3600 / 1000 -> 1 * 3.6 -> 1 [k/m]
@@ -35,7 +35,7 @@ class IsoCompositionSpec extends Specification with CatsEqMatcher {
     *
     * Hint: Use the apply method from Iso
     */
-  lazy val si: Iso[MS, KMH] = ???
+  lazy val si: Iso[MS, KMH] = Iso[MS, KMH](ms => KMH(ms.v * 3.6))(kmh => MS(kmh.v / 3.6))
 
   /**
     * TODO: Implement me!
@@ -56,6 +56,6 @@ class IsoCompositionSpec extends Specification with CatsEqMatcher {
     * Hint: Types should align like Iso[MS, KMH] -> Iso[KMH, MPS] -> Iso[MS, MPS]
     *
     */
-  lazy val si2imperial: Iso[MS, MPH] = si composeIso imperial //TODO: Implement
+  lazy val si2imperial: Iso[MS, MPH] = ???
 
 }

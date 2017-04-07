@@ -13,13 +13,14 @@ class PrismCompositionSpec extends Specification with CatsEqMatcher {
 
   def is =
     s2"""
+      Given a conversion between two prisms it's possible to compose them to get another prism
 
-      $test01
-      $test02
-      $test03
+      First prism should convert string to double if conversion is allowed $test01.
+      Second prism should convert double to m/s if input is non negative number $test02
+      or return None otherwise $test03.
 
-      $test04
-      $test05
+      Composition of both prism should allow to convert string to m/s if conversion is possible $test04
+      or return None otherwise $test05.
 
     """
 
@@ -30,10 +31,18 @@ class PrismCompositionSpec extends Specification with CatsEqMatcher {
   def test04 = msPrism.getOption("2") must beEqvTo(Some(MS(2)))
   def test05 = msPrism.getOption("x") must beNone
 
+  /**
+    * Copied from previous example.
+    */
+  lazy val stringPrism: Prism[String, Double] = Prism[String, Double](s => Try(s.toDouble).toOption)(_.toString)
 
-  lazy val stringPrism: Prism[String, Double] = ???
-
+  /**
+    * TODO: Define a prism which will convert double to m/s if input is non-negative number
+    */
   lazy val positiveNumberPrism: Prism[Double, MS] = ???
 
+  /**
+    * Compose both prisms Prism[String, Double] -> Prism[Double, MS] to obtain conversion between String and MS
+    */
   lazy val msPrism: Prism[String, MS] = ???
 }
